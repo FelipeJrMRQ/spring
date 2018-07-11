@@ -17,10 +17,10 @@ import com.felipe.cursomc.services.exceptions.ObjectNotFoundException;
 
 @Service
 public class ClienteService {
-	
+
 	@Autowired
 	private ClienteRepository repo;
-	
+
 	public Cliente find(Integer id) {
 		Cliente obj = repo.findOne(id);
 		if (obj == null) {
@@ -28,10 +28,16 @@ public class ClienteService {
 		}
 		return obj;
 	}
-	
+
 	public Cliente update(Cliente obj) {
-		find(obj.getId());
-		return repo.save(obj);
+		Cliente newobj = find(obj.getId());
+		updateData(newobj, obj);
+		return repo.save(newobj);
+	}
+
+	private void updateData(Cliente newobj, Cliente obj) {
+		newobj.setNome(obj.getNome());
+		newobj.setEmail(obj.getEmail());
 	}
 
 	public void delete(Integer id) {
@@ -39,21 +45,21 @@ public class ClienteService {
 		try {
 			repo.delete(id);
 		} catch (DataIntegrityViolationException e) {
-			throw new DataIntegrityException("Não é possivel excluir um que possue vinculos");
+			throw new DataIntegrityException("Não é possivel excluir um Cliente que possue vinculos");
 		}
 
 	}
-	
+
 	public List<Cliente> findAll() {
 		return repo.findAll();
 	}
-	
-	public Page<Cliente> findPage(Integer page, Integer linesPerPage, String orderBy, String direction){
-		PageRequest pageRequest = new PageRequest(page, linesPerPage,Direction.valueOf(direction), orderBy);
+
+	public Page<Cliente> findPage(Integer page, Integer linesPerPage, String orderBy, String direction) {
+		PageRequest pageRequest = new PageRequest(page, linesPerPage, Direction.valueOf(direction), orderBy);
 		return repo.findAll(pageRequest);
 	}
-	
+
 	public Cliente fromDTO(ClienteDTO objDto) {
-		throw new UnsupportedOperationException();
+		return new Cliente(objDto.getId(), objDto.getNome(), objDto.getEmail(), null, null);
 	}
 }
