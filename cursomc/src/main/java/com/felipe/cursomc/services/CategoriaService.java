@@ -24,7 +24,8 @@ public class CategoriaService {
 	public Categoria find(Integer id) {
 		Categoria obj = repo.findOne(id);
 		if (obj == null) {
-			throw new ObjectNotFoundException("Objeto não encontrado id: " + id + " Tipo: " + Categoria.class.getName());
+			throw new ObjectNotFoundException(
+					"Objeto não encontrado id: " + id + " Tipo: " + Categoria.class.getName());
 		}
 		return obj;
 	}
@@ -35,8 +36,13 @@ public class CategoriaService {
 	}
 
 	public Categoria update(Categoria obj) {
-		find(obj.getId());
-		return repo.save(obj);
+		Categoria newObj = find(obj.getId());
+		updateData(newObj, obj);
+		return repo.save(newObj);
+	}
+
+	private void updateData(Categoria newObj, Categoria obj) {
+		newObj.setNome(obj.getNome());
 	}
 
 	public void delete(Integer id) {
@@ -46,18 +52,17 @@ public class CategoriaService {
 		} catch (DataIntegrityViolationException e) {
 			throw new DataIntegrityException("Não é possivel excluir uma categoria que possue produtos");
 		}
-
 	}
-	
+
 	public List<Categoria> findAll() {
 		return repo.findAll();
 	}
-	
-	public Page<Categoria> findPage(Integer page, Integer linesPerPage, String orderBy, String direction){
-		PageRequest pageRequest = new PageRequest(page, linesPerPage,Direction.valueOf(direction), orderBy);
+
+	public Page<Categoria> findPage(Integer page, Integer linesPerPage, String orderBy, String direction) {
+		PageRequest pageRequest = new PageRequest(page, linesPerPage, Direction.valueOf(direction), orderBy);
 		return repo.findAll(pageRequest);
 	}
-	
+
 	public Categoria fromDTO(CategoriaDTO objDto) {
 		return new Categoria(objDto.getId(), objDto.getNome());
 	}
