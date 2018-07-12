@@ -15,7 +15,7 @@ import com.felipe.cursomc.domain.Cliente;
 import com.felipe.cursomc.domain.Endereco;
 import com.felipe.cursomc.domain.enums.TipoCliente;
 import com.felipe.cursomc.dto.ClienteDTO;
-import com.felipe.cursomc.dto.ClienteNewDTO;
+import com.felipe.cursomc.repositories.ClienteNewDTO;
 import com.felipe.cursomc.repositories.ClienteRepository;
 import com.felipe.cursomc.repositories.EnderecoRepository;
 import com.felipe.cursomc.services.exceptions.DataIntegrityException;

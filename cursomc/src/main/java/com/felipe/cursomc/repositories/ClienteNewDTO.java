@@ -1,10 +1,15 @@
-package com.felipe.cursomc.dto;
+package com.felipe.cursomc.repositories;
 
 import java.io.Serializable;
+
+import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.NotEmpty;
 
 public class ClienteNewDTO implements Serializable {
 
 	private static final long serialVersionUID = 1L;
+	@NotEmpty(message = "Preenchimento obrigatório")
+	@Length(min = 5, max = 120)
 	private String nome;
 	private String email;
 	private String cpfOuCnpj;
