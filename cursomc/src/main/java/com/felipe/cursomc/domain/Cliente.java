@@ -30,7 +30,7 @@ public class Cliente implements Serializable {
 	private String email;
 	private String cpfOuCnpj;
 	private Integer tipo;
-	@OneToMany(mappedBy = "cliente", cascade= CascadeType.ALL)
+	@OneToMany(mappedBy = "cliente", cascade= CascadeType.ALL)//ok
 	private List<Endereco> enderecos = new ArrayList<>();
 	@ElementCollection
 	@CollectionTable(name = "TELEFONE")
