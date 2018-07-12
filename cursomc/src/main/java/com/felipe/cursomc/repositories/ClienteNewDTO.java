@@ -15,13 +15,18 @@ public class ClienteNewDTO implements Serializable {
 	@NotEmpty(message="Preenchimento obrigatorio")
 	@Email(message ="Email inválido")
 	private String email;
+	@NotEmpty(message="Preenchimento obrigatorio")
 	private String cpfOuCnpj;
 	private Integer tipo;
+	@NotEmpty(message="Preenchimento obrigatorio")
 	private String largadouro;
+	@NotEmpty(message="Preenchimento obrigatorio")
 	private String numero;
 	private String complemento;
 	private String bairro;
+	@NotEmpty(message="Preenchimento obrigatorio")
 	private String cep;
+	@NotEmpty(message="Preenchimento obrigatorio")
 	private String telefone1;
 	private String telefone2;
 	private String telefone3;
