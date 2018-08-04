@@ -10,6 +10,7 @@ import com.felipe.cursomc.repositories.ClienteNewDTO;
 import com.felipe.cursomc.resources.exception.FieldMessage;
 
 public class ClienteInsertValidator implements ConstraintValidator<ClienteInsert,ClienteNewDTO> {
+
 	@Override
 	public void initialize(ClienteInsert ann) {
 	}
@@ -17,6 +18,7 @@ public class ClienteInsertValidator implements ConstraintValidator<ClienteInsert
 	@Override
 	public boolean isValid(ClienteNewDTO objDto, ConstraintValidatorContext context) {
 		List<FieldMessage> list = new ArrayList<>();
+		
 		// inclua os testes aqui, inserindo erros na lista
 		for (FieldMessage e : list) {
 			context.disableDefaultConstraintViolation();
