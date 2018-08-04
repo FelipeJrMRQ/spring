@@ -6,8 +6,10 @@ import java.util.List;
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
+import com.felipe.cursomc.domain.enums.TipoCliente;
 import com.felipe.cursomc.repositories.ClienteNewDTO;
 import com.felipe.cursomc.resources.exception.FieldMessage;
+import com.felipe.cursomc.services.exceptions.utils.BR;
 
 public class ClienteInsertValidator implements ConstraintValidator<ClienteInsert,ClienteNewDTO> {
 
@@ -18,6 +20,14 @@ public class ClienteInsertValidator implements ConstraintValidator<ClienteInsert
 	@Override
 	public boolean isValid(ClienteNewDTO objDto, ConstraintValidatorContext context) {
 		List<FieldMessage> list = new ArrayList<>();
+		
+		if(objDto.getTipo().equals(TipoCliente.PESSOAFISICA.getCod()) && !BR.isValidCPF(objDto.getCpfOuCnpj())) {
+			list.add(new FieldMessage("cpfOuCnpj","CPF inválido"));
+		}
+		
+		if(objDto.getTipo().equals(TipoCliente.PESSOAJURIDICA.getCod()) && !BR.isValidCNPJ(objDto.getCpfOuCnpj())) {
+			list.add(new FieldMessage("cpfOuCnpj","CNPJ inválido"));
+		}
 		
 		// inclua os testes aqui, inserindo erros na lista
 		for (FieldMessage e : list) {
