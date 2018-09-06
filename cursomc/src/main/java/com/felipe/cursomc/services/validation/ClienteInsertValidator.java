@@ -7,7 +7,7 @@ import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
 import com.felipe.cursomc.domain.enums.TipoCliente;
-import com.felipe.cursomc.repositories.ClienteNewDTO;
+import com.felipe.cursomc.dto.ClienteNewDTO;
 import com.felipe.cursomc.resources.exception.FieldMessage;
 import com.felipe.cursomc.services.exceptions.utils.BR;
 

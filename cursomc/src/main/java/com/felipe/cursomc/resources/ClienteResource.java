@@ -19,7 +19,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.felipe.cursomc.domain.Cliente;
 import com.felipe.cursomc.dto.ClienteDTO;
-import com.felipe.cursomc.repositories.ClienteNewDTO;
+import com.felipe.cursomc.dto.ClienteNewDTO;
 import com.felipe.cursomc.services.ClienteService;
 
 @RestController

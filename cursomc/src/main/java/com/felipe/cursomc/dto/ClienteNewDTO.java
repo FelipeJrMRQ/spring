@@ -1,4 +1,4 @@
-package com.felipe.cursomc.repositories;
+package com.felipe.cursomc.dto;
 
 import java.io.Serializable;
 
