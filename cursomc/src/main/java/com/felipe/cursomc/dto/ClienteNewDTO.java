@@ -22,7 +22,7 @@ public class ClienteNewDTO implements Serializable {
 	private String cpfOuCnpj;
 	private Integer tipo;
 	@NotEmpty(message="Preenchimento obrigatorio")
-	private String largadouro;
+	private String logradouro;
 	@NotEmpty(message="Preenchimento obrigatorio")
 	private String numero;
 	private String complemento;
@@ -71,12 +71,12 @@ public class ClienteNewDTO implements Serializable {
 		this.tipo = tipo;
 	}
 
-	public String getLargadouro() {
-		return largadouro;
+	public String getLogradouro() {
+		return logradouro;
 	}
 
-	public void setLargadouro(String largadouro) {
-		this.largadouro = largadouro;
+	public void setLogradouro(String logradouro) {
+		this.logradouro = logradouro;
 	}
 
 	public String getNumero() {

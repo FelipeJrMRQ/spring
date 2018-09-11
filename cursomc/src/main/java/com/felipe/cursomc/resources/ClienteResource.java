@@ -42,13 +42,23 @@ public class ClienteResource {
 		return ResponseEntity.created(uri).build();
 	}
 	
+	/**
+	 * Responde a requisições de pesquisa
+	 * @param id
+	 * @return
+	 */
 	@RequestMapping(value ="/{id}", method = RequestMethod.GET)
 	public ResponseEntity<Cliente> find(@PathVariable Integer id){
 		Cliente obj = service.find(id);
 		return ResponseEntity.ok().body(obj);
 	}
 	
-
+	/**
+	 * Atualiza os dados do cliente
+	 * @param objDto
+	 * @param id
+	 * @return
+	 */
 	@RequestMapping(value ="/{id}", method = RequestMethod.PUT)
 	public ResponseEntity<Void> update(@Valid @RequestBody ClienteDTO objDto, @PathVariable Integer id){
 		Cliente obj = service.fromDTO(objDto);
@@ -57,12 +67,21 @@ public class ClienteResource {
 		return ResponseEntity.noContent().build();
 	}
 	
+	/**
+	 * Realiza a deleção de um cliente
+	 * @param id
+	 * @return
+	 */
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
 	public ResponseEntity<Void> delete(@PathVariable Integer id) {
 		service.delete(id);
 		return ResponseEntity.noContent().build();
 	}
 	
+	/**
+	 * retorna a busca de todos os clientes cadastrados
+	 * @return
+	 */
 	@RequestMapping(method = RequestMethod.GET)
 	public ResponseEntity<List<ClienteDTO>> findAll() {
 		List<Cliente> list = service.findAll();

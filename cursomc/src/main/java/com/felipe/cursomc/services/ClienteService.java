@@ -61,7 +61,7 @@ public class ClienteService {
 		try {
 			repo.delete(id);
 		} catch (DataIntegrityViolationException e) {
-			throw new DataIntegrityException("Não é possivel excluir um Cliente que possue vinculos");
+			throw new DataIntegrityException("Não é possivel excluir um Cliente que possue pedidos");
 		}
 
 	}
@@ -82,7 +82,7 @@ public class ClienteService {
 	public Cliente fromDTO(ClienteNewDTO objDto) {
 		Cliente cliente = new Cliente(null, objDto.getNome(), objDto.getEmail(), objDto.getCpfOuCnpj(), TipoCliente.toEnum(objDto.getTipo()));
 		Cidade cidade = new Cidade(objDto.getCidadeId(), null, null);
-		Endereco endereco = new Endereco(null, objDto.getLargadouro(), objDto.getNumero(), objDto.getComplemento(), objDto.getBairro(), objDto.getCep(), cliente, cidade);
+		Endereco endereco = new Endereco(null, objDto.getLogradouro(), objDto.getNumero(), objDto.getComplemento(), objDto.getBairro(), objDto.getCep(), cliente, cidade);
 		cliente.getEnderecos().add(endereco);
 		cliente.getTelefones().add(objDto.getTelefone1());
 		if (objDto.getTelefone2() != null) {
