@@ -70,9 +70,23 @@ public class CursomcApplication implements CommandLineRunner{
 		Produto p1 = new Produto(null, "Computador", 2000.00);
 		Produto p2 = new Produto(null, "Impressora", 800.00 );
 		Produto p3 = new Produto(null, "Mouse", 80.00);
+		Produto p4 = new Produto(null, "Mesa de escritorio", 30.00);
+		Produto p5 = new Produto(null, "Toalha", 50.00);
+		Produto p6 = new Produto(null, "Colcha", 200.00);
+		Produto p7 = new Produto(null, "Tv true color", 1200.00);
+		Produto p8 = new Produto(null, "Roçadeira", 800.00);
+		Produto p9 = new Produto(null, "Abajur", 100.00);
+		Produto p10 = new Produto(null, "Pedente", 180.00);
+		Produto p11 = new Produto(null, "Shampoo", 90.00);
 		
+		
+		//informatica
 		c1.getProdutos().addAll(Arrays.asList(p1,p2,p3));
-		c2.getProdutos().addAll(Arrays.asList(p2));
+		//escritorio
+		c2.getProdutos().addAll(Arrays.asList(p2,p4));
+		//cama mesa e banho
+		c3.getProdutos().addAll(Arrays.asList(p5,p6));
+		//
 		
 		p1.getCategorias().addAll(Arrays.asList(c1));
 		p2.getCategorias().addAll(Arrays.asList(c1,c2));
